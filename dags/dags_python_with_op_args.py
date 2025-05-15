@@ -12,7 +12,7 @@ with DAG(
 )as dag:
     
     regist_t1=PythonOperator(
-        task_id="regist_tq", # Task ID, graph 상에서 보여지는 이름
+        task_id="regist_t1", # Task ID, graph 상에서 보여지는 이름
         python_callable=regist, # 어떤 함수를 실행시킬지
         op_args=["geonhui","man","kr","seoul"], # 함수에 전달할 인자
     )
