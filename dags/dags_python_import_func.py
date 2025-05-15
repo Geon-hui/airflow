@@ -18,4 +18,3 @@ with DAG(
         python_callable=get_sftp # 어떤 함수를 실행시킬지
     )
 
-    py_t1
