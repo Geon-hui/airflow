@@ -15,7 +15,7 @@ with DAG(
         task_id = "bash_task_t1",
         # UTC기준이 아닌 한국 시간기준이라면 data_interval_start.in_timezone("Asia/Seoul") 
         env={'START_DATE':'{{ data_interval_start.in_timezone("Asia/Seoul") | ds}}',
-             'END_DATE':'{{ (data_interval_end.int_timezone("Asia/Seoul") - macros.dateutil.relativedelta.relativedelta(days=1)) | ds}}'
+             'END_DATE':'{{ (data_interval_end.in_timezone("Asia/Seoul") - macros.dateutil.relativedelta.relativedelta(days=1)) | ds}}'
              },
              bash_command='echo "START_DATE: $START_DATE" && echo "END_DATE: $END_DATE"'
     )
