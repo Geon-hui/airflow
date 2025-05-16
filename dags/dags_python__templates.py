@@ -15,11 +15,11 @@ with DAG(
         print(start_date)
         print(end_date)
 
-        python_t1= PythonOperator(
-            task_id='python_t1',
-            python_callable=python_function1,
-            op_kwargs={'start_date': '{{data_interval_start | ds}}', 'end_date': '{{data_interval_end | ds}}'}
-        )
+    python_t1= PythonOperator(
+        task_id='python_t1',
+        python_callable=python_function1,
+        op_kwargs={'start_date': '{{data_interval_start | ds}}', 'end_date': '{{data_interval_end | ds}}'}
+    )
 
     @task(task_id='python_t2') # op_kwargs 내부에 존재하는 진 템플릿 변수 이용
     def python_function2(**kwargs): 
