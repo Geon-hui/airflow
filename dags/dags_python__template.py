@@ -5,7 +5,7 @@ from airflow.operators.python import PythonOperator
 from airflow.decorators import task
 
 with DAG(
-    dag_id="dags_python__templates",
+    dag_id="dags_python__template",
     schedule="30 9 * * *",
     start_date=pendulum.datetime(2025, 5, 10, tz="Asia/Seoul"),
     catchup=False
@@ -28,6 +28,6 @@ with DAG(
         print('ts:'+kwargs['ts'])
         print('data_interval_start:'+str(kwargs['data_interval_start']))
         print('data_interval_end:'+str(kwargs['data_interval_end']))
-        print('task_instance:'+str(kwargs['task_instance']))
+        print('task_instance:'+str(kwargs['ti']))
 
     python_t1 >> python_function2() # task decorator를 이용했을 때, 함수를 실행하기만 해도 task 생성 + 연결 가능
