@@ -26,8 +26,8 @@ with DAG(
         print(kwargs)
         print('ds:'+kwargs['ds'])
         print('ts:'+kwargs['ts'])
-        print('data_interval_start:'+kwargs['data_interval_start'])
-        print('data_interval_end:'+kwargs['data_interval_end'])
-        print('task_instance:'+kwargs['task_instance'])
+        print('data_interval_start:'+str(kwargs['data_interval_start']))
+        print('data_interval_end:'+str(kwargs['data_interval_end']))
+        print('task_instance:'+str(kwargs['task_instance']))
 
-    python_t1 >> python_function2() # task decorator를 이용했을 때, 함수를 실행하기만 해도 task 생성 + 연결 가능능
+    python_t1 >> python_function2() # task decorator를 이용했을 때, 함수를 실행하기만 해도 task 생성 + 연결 가능
