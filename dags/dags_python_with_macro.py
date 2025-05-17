@@ -1,7 +1,6 @@
 from airflow import DAG
 from airflow.decorators import task
 import pendulum
-# Airflow 3.0 부터 아래 경로로 import 합니다.
 
 
 
