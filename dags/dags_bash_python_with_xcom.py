@@ -11,7 +11,6 @@ with DAG(
 ) as dag:
     @task(task_id='python_push')
     def python_push_xcom():
-        ti = kwargs['ti']
         result_dict = {'status':'Good','data':[1,2,3],'options_cnt':100}
         return result_dict
 
@@ -20,9 +19,7 @@ with DAG(
         env={'STATUS':"{{ ti.xcom_pull(task_ids='python_push')['status'] }}",
              'DATA':"{{ ti.xcom_pull(task_ids='python_push')['data'] }}",
              'OPTIONS_CNT':"{{ ti.xcom_pull(task_ids='python_push')['options_cnt'] }}"},
-        bash_command="echo $STATUS && "
-                     "echo $DATA"
-                     "echo $OPTIONS_CNT"  # echo도 return 값으로 간주
+        bash_command="echo $STATUS && echo $DATA && echo $OPTIONS_CNT"  # echo도 return 값으로 간주
     )
     python_push_xcom() >> bash_pull
 
@@ -38,6 +35,6 @@ with DAG(
         status_value = ti.xcom_pull(key='bash_pushed')
         return_value = ti.xcom_pull(task_ids='bash_push')
         print('status value:'+str(status_value))
-        print('return value:'+value1)
+        print('return value:'+return_value)
     
     bash_push >> python_pull_xcom()
