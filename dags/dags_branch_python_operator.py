@@ -19,7 +19,7 @@ with DAG(
         if selected_item == 'A':
             reruen 'task_a'
         if selected_item in ['B','C']:
-            return ['task_b','task_c']:
+            return ['task_b','task_c']
     
     python_branch_task = BranchPythonOperator(
         task_id='python_branch_task',
