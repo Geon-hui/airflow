@@ -17,8 +17,8 @@ with DAG(
     email_pull = EmailOperator(
         task_id='send_email',
         to='3634lelee@naver.com',
-        subject='{{ (data_interval_end.in_timzone("Asia/Seoul")) |ds }} some_logic 처리 결과',
-        html_content='{{ (data_interval_end.in_timzone("Asia/Seoul")) |ds }} 처리 결과는 <br> \
+        subject='{{ (data_interval_end.in_timezone("Asia/Seoul")) |ds }} some_logic 처리 결과',
+        html_content='{{ (data_interval_end.in_timezone("Asia/Seoul")) |ds }} 처리 결과는 <br> \
                       {{ti.xcom_pull(task_ids="something_task")}} 입니다. <brs>'
     )
     some_logic() >> email_pull 
