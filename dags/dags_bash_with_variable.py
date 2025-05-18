@@ -1,6 +1,6 @@
 import pendulum
-from aorflow import DAG
-form airflow.models import Variable
+from airflow import DAG
+from airflow.models import Variable
 from airflow.operators.bash import BashOperator
 
 with DAG(
@@ -18,5 +18,5 @@ with DAG(
     )
     bash_var_2 = BashOperator( 
         task_id='bash_var_2',
-        bash_command="echo variable:{{var.value.sample_key}}" # 템플릿 변수로 직접 variable 값 가져오기 - 권고고 
+        bash_command="echo variable:{{var.value.sample_key}}" # 템플릿 변수로 직접 variable 값 가져오기 - 권고 
     )
