@@ -10,7 +10,7 @@ with DAG(
     catchup=False
 ) as dag:
 
-    va_value=Variable.get('sample_key') # 파이썬 문법으로 직접 variable 값 가져오기기
+    var_value=Variable.get('sample_key') # 파이썬 문법으로 직접 variable 값 가져오기기
 
     bash_var_1=BashOperator(
         task_id='bash_var_1',
