@@ -22,8 +22,8 @@ with DAG(
         headers={'Content-Type': 'application/json',
                         'charset': 'utf-8',
                         'Accept': '*/*'
-                        }
-                        do_xcom_push=True
+                        },
+        do_xcom_push=True
     )
 
     @task(task_id='python_2')
