@@ -31,7 +31,13 @@ with DAG(
         rslt = ti.xcom_pull(task_ids='tb_cycle_station_info') #XCOM값 가져오기
         import json
         from pprint import pprint
-
-        pprint(json.loads(rslt)) # json 형식으로 출력, pprint로 보기 좋게 출력
+        if rslt:
+            try:
+                pprint(json.loads(rslt))
+            except json.JSONDecodeError as e:
+                print("JSON 파싱 에러:", e)
+            print("원본 응답:", rslt)
+        else:
+            print("XCom에서 가져온 값이 없습니다.")
         
     tb_cycle_station_info >> python_2()
