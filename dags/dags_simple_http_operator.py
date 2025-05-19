@@ -23,6 +23,7 @@ with DAG(
                         'charset': 'utf-8',
                         'Accept': '*/*'
                         }
+                        do_xcom_push=True
     )
 
     @task(task_id='python_2')
