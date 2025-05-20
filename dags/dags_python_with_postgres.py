@@ -27,7 +27,7 @@ with DAG(
     insrt_postgres = PythonOperator(
         task_id='insrt_postgres',
         python_callable=insrt_postgres,
-        op_args=['172.28.0.3', '5432', 'kkh0410', 'kkh0410', 'kkh0410']
-    )
+        op_args=['172.28.0.3', '5432', 'kkh0410', 'kkh0410', 'kkh0410'] # DB 접속 정보 => github 접속 가능한 사람에게 노출됌 + 접속정보 변경시 대응 어려움.
+    ) # 1. varable로 관리(권장X) 2. Hook으로 관리(Variable로 관리하는 것보다 더 안전함, 등록 필요X)
         
     insrt_postgres
